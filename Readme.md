@@ -1,13 +1,16 @@
-### Use 
+### Purpose
 
-Enable subgit shared-daemon feature on existing project 
+Enable subgit shared-daemon feature on existing git repositories translated
 
+More information about svn/git translation :
 https://subgit.com/
 
-### Configuration
+### Use / Configuration
 
-Update convertShardeMode.conf file with :
+`git clone git@github.com:Webelys/subgit_shareddaemon.git`
+
+Update **convertSharedDaemon.conf** file with :
 * git repositories
 * git user GID/UID value
 
-Run bash ./convertShardeMode.sh
+Run `bash ./convertSharedDaemon.sh`
