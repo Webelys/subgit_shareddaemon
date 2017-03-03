@@ -7,7 +7,9 @@ if [ -z $GIT_ROOT ]; then
     exit 1
 fi
 
-
+if [ ! -f "$PROJECT_ROOT/shared-daemon" ]; then
+    cp shared-daemon.config "$GIT_ROOT/shared-daemon/config"
+fi
 
 for repo_source in $(find $GIT_ROOT -iname *.git); do
     echo $repo_source
