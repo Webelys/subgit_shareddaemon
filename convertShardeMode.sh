@@ -12,6 +12,8 @@ if [ ! -f "$PROJECT_ROOT/shared-daemon" ]; then
     cp shared-daemon.config "$GIT_ROOT/shared-daemon/config"
 fi
 
+subgit daemon stop "$GIT_ROOT/shared-daemon"
+
 while IFS= read -r -d '' repo_source
 do
     echo "$repo_source"
@@ -41,3 +43,5 @@ done <   <(find "$GIT_ROOT" -iname "*.git" -print0)
 if [ -n "$GIT_UID" ] && [ -n "$GIT_GID" ]; then
     chown -r "$GIT_UID:$GIT_GIR" "$GIT_ROOT"
 fi
+
+subgit daemon start "$GIT_ROOT/shared-daemon"
