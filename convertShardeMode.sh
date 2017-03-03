@@ -24,7 +24,7 @@ do
     fi
 
     ##Is as shared mode ?
-    if [ $(grep -r 'daemon "shared"' "$repo_source/subgit/config") ]; then
+    if grep -qr 'daemon "shared"' "$repo_source/subgit/config"; then
         echo "Shared daeamon yet enabled"
         continue
     fi
