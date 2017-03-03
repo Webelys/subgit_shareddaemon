@@ -37,3 +37,7 @@ do
     ##Re Enable subgit configuration
     subgit install "$repo_source"
 done <   <(find "$GIT_ROOT" -iname "*.git" -print0)
+
+if [ -n "$GIT_UID" ] && [ -n "$GIT_GID" ]; then
+    chown -r "$GIT_UID:$GIT_GIR" "$GIT_ROOT"
+fi
