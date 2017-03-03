@@ -23,18 +23,16 @@ do
         continue
     fi
 
-    ##Is as shared mode ?
-    if grep -qr 'daemon "shared"' "$repo_source/subgit/config"; then
-        echo "Shared daeamon yet enabled"
-        continue
-    fi
-
     ##Disable subgit configuration
+    ##Redo subgit installation (prevent partial state, configured but not installed)
     subgit uninstall "$repo_source"
 
-    ##Set shared mode
-    echo "[daemon \"shared\"]" >> "$repo_source/subgit/config"
-    echo "    directory = $GIT_ROOT/shared-daemon" >> "$repo_source/subgit/config"
+    ##Is not shared mode ? then configure subgit 
+    if ! grep -qr 'daemon "shared"' "$repo_source/subgit/config"; then
+        ##Set shared mode
+        echo "[daemon \"shared\"]" >> "$repo_source/subgit/config"
+        echo "    directory = $GIT_ROOT/shared-daemon" >> "$repo_source/subgit/config"
+    fi
 
     ##Re Enable subgit configuration
     subgit install "$repo_source"
