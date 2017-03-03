@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-. convertShardeMode.conf
+. convertSharedDaemon.conf
 
 if [ -z "$GIT_ROOT" ]; then
     echo "Set a git repository first"
