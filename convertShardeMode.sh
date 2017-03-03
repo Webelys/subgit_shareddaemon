@@ -8,6 +8,7 @@ if [ -z $GIT_ROOT ]; then
 fi
 
 if [ ! -f "$PROJECT_ROOT/shared-daemon" ]; then
+    mkdir "$GIT_ROOT/shared-daemon"
     cp shared-daemon.config "$GIT_ROOT/shared-daemon/config"
 fi
 
