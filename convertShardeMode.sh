@@ -7,7 +7,7 @@ if [ -z "$GIT_ROOT" ]; then
     exit 1
 fi
 
-if [ ! -f "$PROJECT_ROOT/shared-daemon" ]; then
+if [ ! -d "$PROJECT_ROOT/shared-daemon" ]; then
     mkdir "$GIT_ROOT/shared-daemon"
     cp shared-daemon.config "$GIT_ROOT/shared-daemon/config"
 fi
