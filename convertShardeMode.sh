@@ -25,7 +25,13 @@ for repo_source in $(find $GIT_ROOT -iname *.git); do
         continue
     fi
 
+    // Re Enable subgit configuration
+    subgit uninstall $repo_source
+
     //Set shared mode
     echo "[daemon \"shared\"]" >> $repo_source/subgit/config
     echo "    directory = $GIT_ROOT/shared-daemon" >> $repo_source/subgit/config
+
+    // Re Enable subgit configuration
+    subgit install $repo_source
 done
