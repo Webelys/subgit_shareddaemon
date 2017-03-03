@@ -12,7 +12,8 @@ if [ ! -f "$PROJECT_ROOT/shared-daemon" ]; then
     cp shared-daemon.config "$GIT_ROOT/shared-daemon/config"
 fi
 
-for repo_source in $(find "$GIT_ROOT" -iname "*.git"); do
+while IFS= read -r -d '' repo_source
+do
     echo "$repo_source"
     repo_name=$(basename "$repo_source" .git)
 
@@ -37,4 +38,4 @@ for repo_source in $(find "$GIT_ROOT" -iname "*.git"); do
 
     ##Re Enable subgit configuration
     subgit install "$repo_source"
-done
+done <   <(find "$GIT_ROOT" -iname "*.git" -print0)
