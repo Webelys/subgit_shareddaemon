@@ -7,12 +7,12 @@ if [ -z "$GIT_ROOT" ]; then
     exit 1
 fi
 
-if [ ! -d "$PROJECT_ROOT/shared-daemon" ]; then
-    mkdir "$GIT_ROOT/shared-daemon"
-    cp shared-daemon.config "$GIT_ROOT/shared-daemon/config"
+if [ ! -d "$PROJECT_ROOT_SUBGIT/shared-daemon" ]; then
+    mkdir "$PROJECT_ROOT_SUBGIT/shared-daemon"
+    cp shared-daemon.config "$PROJECT_ROOT_SUBGIT/shared-daemon/config"
 fi
 
-subgit daemon stop "$GIT_ROOT/shared-daemon"
+subgit daemon stop "$PROJECT_ROOT_SUBGIT/shared-daemon"
 
 while IFS= read -r -d '' repo_source
 do
@@ -38,10 +38,10 @@ do
 
     ##Re Enable subgit configuration
     subgit install "$repo_source"
-done <   <(find "$GIT_ROOT" -iname "*.git" -print0)
+done <   <(find "$GIT_DIRECTORY" -iname "*.git" -print0)
 
 if [ -n "$GIT_UID" ] && [ -n "$GIT_GID" ]; then
-    chown -r "$GIT_UID:$GIT_GIR" "$GIT_ROOT"
+    chown -r "$GIT_UID:$GIT_GIR" "$GIT_DIRECTORY"
 fi
 
-subgit daemon start "$GIT_ROOT/shared-daemon"
+subgit daemon start "$PROJECT_ROOT_SUBGIT/shared-daemon"
