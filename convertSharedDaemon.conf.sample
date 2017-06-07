@@ -1,4 +1,6 @@
 # Local new git directory with local mode configuration
-GIT_ROOT=""
-GIT_UID=""
-GIT_GID=""
+PROJECT_ROOT=""
+GIT_DIRECTORY="$PROJECT_ROOT/repositories/"
+GIT_NAME="git"
+GIT_UID=$(id -u $GIT_NAME)
+GIT_GID=$(id -g $GIT_NAME)
