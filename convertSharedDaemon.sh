@@ -33,7 +33,7 @@ do
     if ! grep -qr 'daemon "shared"' "$repo_source/subgit/config"; then
         ##Set shared mode
         echo "[daemon \"shared\"]" >> "$repo_source/subgit/config"
-        echo "    directory = $GIT_ROOT/shared-daemon" >> "$repo_source/subgit/config"
+        echo "    directory = $PROJECT_ROOT_SUBGIT/shared-daemon" >> "$repo_source/subgit/config"
     fi
 
     ##Re Enable subgit configuration
